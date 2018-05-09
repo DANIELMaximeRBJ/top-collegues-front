@@ -6,7 +6,8 @@
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "build": "ng build --prod --base-href https://NOM_UTILISATEUR.github.io/top-collegues-front/",
+    "build":
+      "ng build --prod --base-href https://DANIELMaximeRBJ.github.io/top-collegues-front/",
     "e2e": "ng e2e"
   },
   "private": true,
