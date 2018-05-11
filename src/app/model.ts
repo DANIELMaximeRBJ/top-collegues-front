@@ -9,7 +9,7 @@ export class Collegue {
   score: number;
 
   constructor(pseudo) {
-    this.photo = "/assets/image.jpg";
+    this.photo = "https://wamiz.com/chiens/berger-blanc-suisse-25";
     this.pseudo = pseudo;
     this.score = 0;
   }
