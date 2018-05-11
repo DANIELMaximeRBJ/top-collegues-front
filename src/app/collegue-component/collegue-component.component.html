@@ -1,0 +1,12 @@
+<div class="card row" style="width: 20rem;">
+  <img class="card-img-top" src={{collegue.photo}} alt="dog">
+  <div class="card-body">
+    <p class="card-text" align="center">{{collegue.pseudo}}</p>
+    <p class="card-text" align="center">{{collegue.score}}</p>
+
+    <app-avis-component (avis)="traiter($event)">
+    </app-avis-component>
+
+    <p>{{messageAvis}}</p>
+  </div>
+</div>

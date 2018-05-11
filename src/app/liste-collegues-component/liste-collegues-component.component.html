@@ -1,0 +1,9 @@
+<button class="btn btn-primary" (click)="onClick()">Rafraichir</button>
+<div class="row">
+  <div *ngFor="let c of collegues" class="ml-5">
+
+    <app-collegue-component [collegue]="c">
+
+    </app-collegue-component>
+  </div>
+</div>
