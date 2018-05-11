@@ -1,2 +1,2 @@
-<button class="btn btn-primary" (click)="onClickAimer()">J'aime</button>
-<button class="btn btn-primary" (click)="onClickDetester()"> Je déteste</button>
+<button class="btn btn-primary" (click)="onClickAimer()" [disabled]="aimable">J'aime</button>
+<button class="btn btn-primary" (click)="onClickDetester()" [disabled]="detestable"> Je déteste</button>

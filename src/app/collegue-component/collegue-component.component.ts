@@ -11,6 +11,8 @@ import { Avis } from "../model";
 export class CollegueComponentComponent implements OnInit {
   constructor() {}
   @Input() collegue: Collegue;
+  aimable: boolean;
+  detestable: boolean;
 
   messageAvis = "";
   traiter(unAvis: Avis) {
@@ -21,6 +23,11 @@ export class CollegueComponentComponent implements OnInit {
       this.collegue.score = this.collegue.score - 50;
     }
     this.messageAvis = "Vous avez voté " + unAvis;
+    this.aimable = this.collegue.score >= 1000;
+    this.detestable = this.collegue.score <= -1000;
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.aimable = this.collegue.score >= 1000;
+    this.detestable = this.collegue.score <= -1000;
+  }
 }

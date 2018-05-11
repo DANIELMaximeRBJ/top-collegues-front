@@ -4,7 +4,7 @@
     <p class="card-text" align="center">{{collegue.pseudo}}</p>
     <p class="card-text" align="center">{{collegue.score}}</p>
 
-    <app-avis-component (avis)="traiter($event)">
+    <app-avis-component [aimable]="aimable" [detestable]="detestable" (avis)="traiter($event)">
     </app-avis-component>
 
     <p>{{messageAvis}}</p>
