@@ -7,9 +7,11 @@ import { DemoComponent } from "./demo/demo.component";
 import { BandeauComponentComponent } from "./bandeau-component/bandeau-component.component";
 import { AvisComponentComponent } from "./avis-component/avis-component.component";
 import { CollegueComponentComponent } from "./collegue-component/collegue-component.component";
-import { ListeColleguesComponentComponent } from './liste-collegues-component/liste-collegues-component.component';
-import { HistoriqueVotesComponent } from './historique-votes/historique-votes.component';
-import { AccueilComponent } from './accueil/accueil.component';
+import { ListeColleguesComponentComponent } from "./liste-collegues-component/liste-collegues-component.component";
+import { HistoriqueVotesComponent } from "./historique-votes/historique-votes.component";
+import { AccueilComponent } from "./accueil/accueil.component";
+import { HttpClientModule } from "@angular/common/http";
+import { CollegueService } from "./services/collegue.service";
 
 @NgModule({
   declarations: [
@@ -22,8 +24,8 @@ import { AccueilComponent } from './accueil/accueil.component';
     HistoriqueVotesComponent,
     AccueilComponent
   ],
-  imports: [BrowserModule, MDBBootstrapModule.forRoot()],
-  providers: [],
+  imports: [BrowserModule, MDBBootstrapModule.forRoot(), HttpClientModule],
+  providers: [CollegueService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
