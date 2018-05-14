@@ -12,6 +12,20 @@ import { HistoriqueVotesComponent } from "./historique-votes/historique-votes.co
 import { AccueilComponent } from "./accueil/accueil.component";
 import { HttpClientModule } from "@angular/common/http";
 import { CollegueService } from "./services/collegue.service";
+import { MenuComponent } from "./menu/menu.component";
+import { RouterModule, Routes } from "@angular/router";
+
+const appRoutes: Routes = [
+  { path: "accueil", component: AccueilComponent },
+
+  { path: "demo", component: DemoComponent },
+
+  { path: "collegue/", component: CollegueComponentComponent },
+
+  { path: "", redirectTo: "/accueil", pathMatch: "full" },
+
+  { path: "**", redirectTo: "/accueil", pathMatch: "full" } // page non trouvée
+];
 
 @NgModule({
   declarations: [
@@ -22,9 +36,15 @@ import { CollegueService } from "./services/collegue.service";
     CollegueComponentComponent,
     ListeColleguesComponentComponent,
     HistoriqueVotesComponent,
-    AccueilComponent
+    AccueilComponent,
+    MenuComponent
   ],
-  imports: [BrowserModule, MDBBootstrapModule.forRoot(), HttpClientModule],
+  imports: [
+    BrowserModule,
+    MDBBootstrapModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
+  ],
   providers: [CollegueService],
   bootstrap: [AppComponent]
 })
