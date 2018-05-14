@@ -42,7 +42,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { onSameUrlNavigation: `reload` }),
     HttpClientModule
   ],
   providers: [CollegueService],
