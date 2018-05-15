@@ -5,8 +5,7 @@ before_script:
   - npm install
 script:
   - npm run build
-  - cp C:/Travail/Angular/top-collegues-front/index.html C:/Travail/Angular/top-collegues-front/404.html
-deploy:
+  - cp ./dist/top-collegues-front/index.html ./dist/top-collegues-front/404.html
   local-dir: dist/top-collegues-front
   provider: pages
   skip-cleanup: true
