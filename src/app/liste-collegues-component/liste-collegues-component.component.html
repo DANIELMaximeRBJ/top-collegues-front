@@ -1,10 +1,18 @@
-<button class="btn btn-primary" (click)="onClick()">
-  Rafraichir</button>
+<button class="btn btn-primary" (click)="onClick()"> Rafraichir
+</button>
+
+<form class="form-inline">
+  <div class="form-group mb-2">
+    <label for="text" class="sr-only">Filtrer par pseudo :</label>
+    <input type="text" readonly class="form-control-plaintext" id="text" value="Filtrer par pseudo :">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search" id="pseudo" #saisieInput (keyup)="recherchePseudo = saisieInput.value">
+  </div>
+</form>
+
 <div class="row">
-  <div *ngFor="let c of collegues" class="ml-5">
-
-    <app-collegue-component [collegue]="c">
-
-    </app-collegue-component>
+  <div *ngFor="let c of collegues | filtrerCollegue: recherchePseudo" class="ml-5 ">
+    <app-collegue-component [collegue]="c "></app-collegue-component>
   </div>
 </div>

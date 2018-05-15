@@ -9,7 +9,10 @@ import { CollegueService } from "../services/collegue.service";
 })
 export class ListeColleguesComponentComponent implements OnInit {
   collegues: Collegue[];
-  constructor(private CService: CollegueService) {}
+  recherchePseudo: string;
+  constructor(private CService: CollegueService) {
+    this.recherchePseudo = "";
+  }
   onClick() {}
   ngOnInit() {
     this.CService.listerCollegues()
