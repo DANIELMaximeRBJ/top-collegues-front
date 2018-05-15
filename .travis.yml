@@ -6,6 +6,7 @@ before_script:
 script:
   - npm run build
   - cp ./dist/top-collegues-front/index.html ./dist/top-collegues-front/404.html
+deploy:
   local-dir: dist/top-collegues-front
   provider: pages
   skip-cleanup: true
