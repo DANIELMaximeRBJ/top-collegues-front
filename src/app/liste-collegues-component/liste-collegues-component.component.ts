@@ -10,6 +10,7 @@ import { CollegueService } from "../services/collegue.service";
 export class ListeColleguesComponentComponent implements OnInit {
   collegues: Collegue[];
   constructor(private CService: CollegueService) {}
+  onClick() {}
   ngOnInit() {
     this.CService.listerCollegues()
       .then(cols => (this.collegues = cols))
