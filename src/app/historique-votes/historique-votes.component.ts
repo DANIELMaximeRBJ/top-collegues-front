@@ -18,10 +18,10 @@ export class HistoriqueVotesComponent implements OnInit {
 
   ngOnInit() {
     this.listevotes = [
-      new Vote(new Collegue("Jean"), Avis.AIMER),
-      new Vote(new Collegue("Paul"), Avis.DETESTER),
-      new Vote(new Collegue("Jean"), Avis.AIMER),
-      new Vote(new Collegue("Jean"), Avis.DETESTER)
+      new Vote(new Collegue("Cowboy", "gil", "jean"), Avis.AIMER),
+      new Vote(new Collegue("pape", "JEAN", "paul"), Avis.DETESTER),
+      new Vote(new Collegue("Cowboy", "gil", "jean"), Avis.AIMER),
+      new Vote(new Collegue("Cowboy", "gil", "jean"), Avis.DETESTER)
     ];
   }
 }

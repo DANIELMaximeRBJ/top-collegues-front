@@ -14,13 +14,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { CollegueService } from "./services/collegue.service";
 import { MenuComponent } from "./menu/menu.component";
 import { RouterModule, Routes } from "@angular/router";
+import { DetailCollegueComponent } from "./detail-collegue/detail-collegue.component";
 
 const appRoutes: Routes = [
   { path: "accueil", component: AccueilComponent },
 
   { path: "demo", component: DemoComponent },
 
-  { path: "collegue/", component: CollegueComponentComponent },
+  { path: "collegue/:pseudo", component: DetailCollegueComponent },
 
   { path: "", redirectTo: "/accueil", pathMatch: "full" },
 
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     ListeColleguesComponentComponent,
     HistoriqueVotesComponent,
     AccueilComponent,
-    MenuComponent
+    MenuComponent,
+    DetailCollegueComponent
   ],
   imports: [
     BrowserModule,

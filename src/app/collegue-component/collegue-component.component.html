@@ -1,10 +1,12 @@
 <div class="card row" style="width: 20rem;">
   <img class="card-img-top" src={{collegue.photo}} alt="dog">
   <div class="card-body">
-    <p class="card-text" align="center">{{collegue.pseudo}}</p>
-    <p class="card-text" align="center">{{collegue.score}}</p>
+    <button type="button" class="btn btn-link card-text" align="center" (click)="onClickPseudo()">
+      {{collegue.pseudo}}
+    </button>
+    <p class="card-text " align="center ">{{collegue.score}}</p>
 
-    <app-avis-component [aimable]="aimable" [detestable]="detestable" (avis)="traiter($event)">
+    <app-avis-component [aimable]="aimable " [detestable]="detestable " (avis)="traiter($event) ">
     </app-avis-component>
 
     <p>{{messageAvis}}</p>

@@ -8,12 +8,8 @@ import { CollegueService } from "../services/collegue.service";
   styleUrls: ["./liste-collegues-component.component.scss"]
 })
 export class ListeColleguesComponentComponent implements OnInit {
-  //collegues: Collegue[];
-
   collegues: Collegue[];
   constructor(private CService: CollegueService) {}
-  onClick() {}
-
   ngOnInit() {
     this.CService.listerCollegues()
       .then(cols => (this.collegues = cols))

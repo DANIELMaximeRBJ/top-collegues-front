@@ -4,6 +4,7 @@ import { Collegue } from "../model";
 import { CollegueService } from "../services/collegue.service";
 
 import { Avis } from "../model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-collegue-component",
@@ -11,12 +12,15 @@ import { Avis } from "../model";
   styleUrls: ["./collegue-component.component.scss"]
 })
 export class CollegueComponentComponent implements OnInit {
-  constructor(private CService: CollegueService) {}
+  constructor(private CService: CollegueService, private router: Router) {}
   @Input() collegue: Collegue;
   aimable: boolean;
   detestable: boolean;
 
   messageAvis = "";
+  onClickPseudo() {
+    this.router.navigate(["/collegue", this.collegue.pseudo]);
+  }
   traiter(unAvis: Avis) {
     this.CService.donnerUnAvis(this.collegue, unAvis)
       .then(cols => {

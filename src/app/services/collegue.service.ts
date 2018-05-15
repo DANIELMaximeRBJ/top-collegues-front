@@ -22,4 +22,9 @@ export class CollegueService {
       })
       .toPromise();
   }
+  colleguesParPseudo(pseudo: string): Promise<Collegue> {
+    return this._http
+      .get<Collegue>(`${URL_BACKEND}/Collegues/${pseudo}`)
+      .toPromise();
+  }
 }
