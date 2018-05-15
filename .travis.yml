@@ -14,5 +14,6 @@ script:
   on:
     branch: master
 notifications:
+
   email: false
   slack: diginamic:nIQwPkWk2zfq2fjtzxMWhuBD#travis-callofdta
