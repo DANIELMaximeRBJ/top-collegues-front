@@ -17,6 +17,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { DetailCollegueComponent } from "./detail-collegue/detail-collegue.component";
 import { ScorePipe } from "./pipes/score.pipe";
 import { FiltrerColleguePipe } from "./pipes/filtrer-collegue.pipe";
+import { AjouterUnCollegueComponent } from "./ajouter-un-collegue/ajouter-un-collegue.component";
+import { FormsModule } from "@angular/forms";
 
 const appRoutes: Routes = [
   { path: "accueil", component: AccueilComponent },
@@ -24,6 +26,8 @@ const appRoutes: Routes = [
   { path: "demo", component: DemoComponent },
 
   { path: "collegue/:pseudo", component: DetailCollegueComponent },
+
+  { path: "Ajouter", component: AjouterUnCollegueComponent },
 
   { path: "", redirectTo: "/accueil", pathMatch: "full" },
 
@@ -43,13 +47,15 @@ const appRoutes: Routes = [
     MenuComponent,
     DetailCollegueComponent,
     ScorePipe,
-    FiltrerColleguePipe
+    FiltrerColleguePipe,
+    AjouterUnCollegueComponent
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(appRoutes, { onSameUrlNavigation: `reload` }),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [CollegueService],
   bootstrap: [AppComponent]

@@ -27,4 +27,9 @@ export class CollegueService {
       .get<Collegue>(`${URL_BACKEND}/Collegues/${pseudo}`)
       .toPromise();
   }
+  CreernouveauCollegue(collegueForm: any): Promise<Collegue> {
+    return this._http
+      .post<Collegue>(`${URL_BACKEND}/Collegues/Ajouter`, collegueForm)
+      .toPromise();
+  }
 }

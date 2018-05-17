@@ -6,7 +6,7 @@
 
       <div class=col>
         <p class="card-text" align="center">{{v.collegue.pseudo}}</p>
-        <div *ngIf="v.avis =='Je deteste'; else elseBlock">
+        <div *ngIf="v.avis =='DETESTER'; else elseBlock">
           <p class="card-text" align="center">{{v.collegue.pseudo}} est détesté avec un score de {{v.collegue.score}}</p>
         </div>
         <ng-template #elseBlock>

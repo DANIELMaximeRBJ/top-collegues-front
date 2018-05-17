@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <app-menu></app-menu>
+  <h1>Ajouter un collegue</h1>
+
+  <form (ngSubmit)="submit()" name="myForm" class="cols">
+    <div class="form-group">
+      <label class="col-3">Matricule</label>
+      <input class="col-3" type="text" name="myMatricule" #matriculeField="ngModel" [(ngModel)]="collegueForm.matricule" required>
+      <span style="color:red" *ngIf="matriculeField.dirty && matriculeField.invalid">
+        <span ng-show="myForm.myMatricule.$error.required">Matricule is required.</span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label class="col-3">Pseudo</label>
+      <input class="col-3" type="text" name="myPseudo" #pseudoField="ngModel" [(ngModel)]="collegueForm.pseudo" required minlength="2">
+      <span style="color:red" *ngIf="pseudoField.dirty && pseudoField.invalid">
+        <span ng-show="myForm.myPseudo.$error.required">Pseudo is required.Min length 2</span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label class="col-3">URL image</label>
+      <input ng-model="text" class="col-3" type="text" name="myPhoto" #urlField="ngModel" [(ngModel)]="collegueForm.photo">
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" *ngIf=" matriculeField.valid && pseudoField.valid">
+    </div>
+  </form>
+  {{error}}
+</body>
+
+</html>
