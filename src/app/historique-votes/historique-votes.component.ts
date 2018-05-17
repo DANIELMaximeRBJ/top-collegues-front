@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Collegue } from "../model";
 import { Vote } from "../model";
 import { Avis } from "../model";
+import { CollegueService } from "../services/collegue.service";
 
 @Component({
   selector: "app-historique-votes",
@@ -9,19 +10,16 @@ import { Avis } from "../model";
   styleUrls: ["./historique-votes.component.scss"]
 })
 export class HistoriqueVotesComponent implements OnInit {
-  listevotes: Vote[];
-  constructor() {}
+  listevotes: Vote[] = [];
+  constructor(private CService: CollegueService) {}
   onClick($event) {
     let suppr = this.listevotes.lastIndexOf($event);
     this.listevotes.splice(suppr, 1);
   }
 
   ngOnInit() {
-    this.listevotes = [
-      new Vote(new Collegue("Cowboy", "gil", "jean"), Avis.AIMER),
-      new Vote(new Collegue("pape", "JEAN", "paul"), Avis.DETESTER),
-      new Vote(new Collegue("Cowboy", "gil", "jean"), Avis.AIMER),
-      new Vote(new Collegue("Cowboy", "gil", "jean"), Avis.DETESTER)
-    ];
+    this.CService.subjectAvisCollegueObs.subscribe(vote =>
+      this.listevotes.push(vote)
+    );
   }
 }

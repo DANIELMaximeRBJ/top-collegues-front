@@ -18,10 +18,9 @@ export class AjouterUnCollegueComponent implements OnInit {
   submit() {
     this.cService
       .CreernouveauCollegue(this.collegueForm)
-      .then((data: any) => {
+      .subscribe((data: any) => {
         this.router.navigate(["/Accueil"]);
-      })
-      .catch(err => (this.error = err.error));
+      }, err => (this.error = err.error));
   }
   ngOnInit() {}
 }

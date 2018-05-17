@@ -2,34 +2,51 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { error } from "selenium-webdriver";
-import { Collegue, Avis } from "../model";
+import { Collegue, Avis, Vote } from "../model";
 import { HttpHeaders } from "@angular/common/http";
+import { Observable, Subject, ReplaySubject } from "rxjs";
+import { tap } from "rxjs/operators";
+
 const URL_BACKEND = environment.backendUrl;
 
 @Injectable({
   providedIn: "root"
 })
 export class CollegueService {
+  private sub = new ReplaySubject<Vote>(3);
+
+  get subjectAvisCollegueObs() {
+    return this.sub.asObservable();
+  }
+
   constructor(private _http: HttpClient) {}
-  listerCollegues(): Promise<Collegue[]> {
-    return this._http.get<Collegue[]>(`${URL_BACKEND}/Collegues`).toPromise();
+
+  listerCollegues(): Observable<Collegue[]> {
+    return this._http.get<Collegue[]>(`${URL_BACKEND}/Collegues`);
     // récupérer la liste des collègues côté serveur
   }
-  donnerUnAvis(unCollegue: Collegue, avis: Avis): Promise<Collegue> {
+
+  donnerUnAvis(unCollegue: Collegue, avis: Avis): Observable<Collegue> {
     return this._http
       .patch<Collegue>(`${URL_BACKEND}/Collegues/${unCollegue.pseudo}`, {
         action: avis.valueOf()
       })
-      .toPromise();
+      .pipe(
+        tap(col => {
+          // émission événement nouvel avis
+          this.sub.next(new Vote(col, avis));
+        })
+      );
   }
-  colleguesParPseudo(pseudo: string): Promise<Collegue> {
-    return this._http
-      .get<Collegue>(`${URL_BACKEND}/Collegues/${pseudo}`)
-      .toPromise();
+
+  colleguesParPseudo(pseudo: string): Observable<Collegue> {
+    return this._http.get<Collegue>(`${URL_BACKEND}/Collegues/${pseudo}`);
   }
-  CreernouveauCollegue(collegueForm: any): Promise<Collegue> {
-    return this._http
-      .post<Collegue>(`${URL_BACKEND}/Collegues/Ajouter`, collegueForm)
-      .toPromise();
+
+  CreernouveauCollegue(collegueForm: any): Observable<Collegue> {
+    return this._http.post<Collegue>(
+      `${URL_BACKEND}/Collegues/Ajouter`,
+      collegueForm
+    );
   }
 }

@@ -22,21 +22,23 @@ export class DetailCollegueComponent implements OnInit {
   ngOnInit() {
     this.cService
       .colleguesParPseudo(this._route.snapshot.paramMap.get("pseudo"))
-      .then((col: Collegue) => {
-        this.collegue = col;
-      })
-      .catch(err => console.log(err));
+      .subscribe(
+        (col: Collegue) => {
+          this.collegue = col;
+        },
+        err => console.log(err)
+      );
   }
 
   traiter(unAvis: Avis) {
-    this.cService
-      .donnerUnAvis(this.collegue, unAvis)
-      .then(nCol => {
+    this.cService.donnerUnAvis(this.collegue, unAvis).subscribe(
+      nCol => {
         this.collegue = nCol;
         this.messageAvis = "Vous avez voté " + unAvis;
         this.aimable = this.collegue.score >= 1000;
         this.detestable = this.collegue.score <= -1000;
-      })
-      .catch(err => console.log(err));
+      },
+      err => console.log(err)
+    );
   }
 }

@@ -22,14 +22,15 @@ export class CollegueComponentComponent implements OnInit {
     this.router.navigate(["/collegue", this.collegue.pseudo]);
   }
   traiter(unAvis: Avis) {
-    this.CService.donnerUnAvis(this.collegue, unAvis)
-      .then(cols => {
+    this.CService.donnerUnAvis(this.collegue, unAvis).subscribe(
+      cols => {
         this.collegue = cols;
         this.messageAvis = "Vous avez voté " + unAvis;
         this.aimable = this.collegue.score >= 1000;
         this.detestable = this.collegue.score <= -1000;
-      })
-      .catch(err => console.log(err));
+      },
+      err => console.log(err)
+    );
   }
   ngOnInit() {
     this.aimable = this.collegue.score >= 1000;

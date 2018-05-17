@@ -2,17 +2,17 @@
 <div *ngFor="let v of listevotes">
   <div class="card mt-2" style="width: 40rem;">
     <div class="card-body row">
-      <img class="card-img-top col-6" src="{{v.collegue.photo}}" alt="dog">
+      <img class="card-img-top col-6" src="{{v.collegue.photo}}" style="width:30%; height:30%;" alt="dog ">
 
       <div class=col>
-        <p class="card-text" align="center">{{v.collegue.pseudo}}</p>
-        <div *ngIf="v.avis =='DETESTER'; else elseBlock">
-          <p class="card-text" align="center">{{v.collegue.pseudo}} est détesté avec un score de {{v.collegue.score}}</p>
+        <p class="card-text " align="center ">{{v.collegue.pseudo}}</p>
+        <div *ngIf="v.avis=='DETESTER' ; else elseBlock ">
+          <p class="card-text " align="center ">{{v.collegue.pseudo}} est détesté avec un score de {{v.collegue.score}}</p>
         </div>
         <ng-template #elseBlock>
-          <p class="card-text" align="center">{{v.collegue.pseudo}} est aimé avec un score de {{v.collegue.score}}</p>
+          <p class="card-text " align="center ">{{v.collegue.pseudo}} est aimé avec un score de {{v.collegue.score}}</p>
         </ng-template>
-        <button class="btn btn-primary" (click)="onClick(v)">Supprimer</button>
+        <button class="btn btn-primary " (click)="onClick(v) ">Supprimer</button>
       </div>
     </div>
   </div>

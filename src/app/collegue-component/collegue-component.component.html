@@ -3,7 +3,7 @@
   <div class="card-body">
     <button type="button" class="btn btn-link card-text" align="center" (click)="onClickPseudo()">{{collegue.pseudo | uppercase}}
     </button>
-    <p class="card-text " align="center " [innerHTML]="collegue.score | score"></p>
+    <p class="card-text " align="center" [innerHTML]="collegue.score | score"></p>
 
     <app-avis-component [aimable]="aimable " [detestable]="detestable " (avis)="traiter($event) ">
     </app-avis-component>

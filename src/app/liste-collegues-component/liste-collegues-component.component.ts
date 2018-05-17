@@ -19,8 +19,7 @@ export class ListeColleguesComponentComponent implements OnInit {
     this.router.navigate(["/Ajouter"]);
   }
   ngOnInit() {
-    this.CService.listerCollegues()
-      .then(cols => (this.collegues = cols))
-      .catch(console.log);
+    this.CService.listerCollegues().subscribe(cols => (this.collegues = cols)),
+      err => console.log(err);
   }
 }
